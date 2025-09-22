@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan("combined"));
 
-// Employee endpoints
+// Employee endpoint
 app.use("/api/v1/employees", employeeRoutes)
 
 // Health check endpoint

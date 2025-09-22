@@ -4,7 +4,10 @@ Author: Noah Manaigre
 
 Description:
 
+Endpoint links:
 
+-http://localhost:3000/health
+-http://localhost:3000/api/v1/employees
 
 Debug Examples:
 

@@ -1,4 +1,4 @@
-import { employees, Employee } from "src/data/employees"
+import { employees, Employee } from "../../../data/employees"
 
 export const getAllEmployees = (): Employee[] => employees
 
