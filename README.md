@@ -22,3 +22,9 @@ app.get("/health", (req: Request, res: Response) => {
 This will intentionally throw an error to ensure your error-handling middleware works correctly.
 
 Debug #2: 
+
+-http://localhost:3000/api/v1/employees
+-http://localhost:3000/api/v1/employees/1
+
+Debug #3
+
