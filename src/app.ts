@@ -1,11 +1,15 @@
 import express, { Request, Response } from "express";
 import morgan from "morgan";
+import employeeRoutes from "./api/v1/routes/employeeRoutes"
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(morgan("combined"));
+
+// Employee endpoints
+app.use("/api/v1/employees", employeeRoutes)
 
 // Health check endpoint
 app.get("/health", (req: Request, res: Response) => {
