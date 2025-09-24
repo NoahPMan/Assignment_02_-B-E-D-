@@ -72,4 +72,30 @@ describe("Employee Controller", () => {
     expect(statusMock).toHaveBeenCalledWith(404)
     expect(jsonMock).toHaveBeenCalledWith({ error: "Employee not found" })
   })
+
+  it("getEmployeesByBranch - should return employees for a branch", () => {
+    mockReq = { params: { branchId: "1" } }
+    EmployeeController.getEmployeesByBranch(mockReq as Request, mockRes as Response)
+    expect(jsonMock).toHaveBeenCalledWith(EmployeeService.getEmployeesByBranch(1))
+  })
+
+  it("getEmployeesByBranch - should return 400 for invalid branch ID", () => {
+    mockReq = { params: { branchId: "abc" } }
+    EmployeeController.getEmployeesByBranch(mockReq as Request, mockRes as Response)
+    expect(statusMock).toHaveBeenCalledWith(400)
+    expect(jsonMock).toHaveBeenCalledWith({ error: "Invalid branch ID" })
+  })
+
+  it("getEmployeesByDepartment - should return employees for a department", () => {
+    mockReq = { params: { department: "QA" } }
+    EmployeeController.getEmployeesByDepartment(mockReq as Request, mockRes as Response)
+    expect(jsonMock).toHaveBeenCalledWith(EmployeeService.getEmployeesByDepartment("QA"))
+  })
+
+  it("getEmployeesByDepartment - should return 400 if department is missing", () => {
+    mockReq = { params: { department: "" } }
+    EmployeeController.getEmployeesByDepartment(mockReq as Request, mockRes as Response)
+    expect(statusMock).toHaveBeenCalledWith(400)
+    expect(jsonMock).toHaveBeenCalledWith({ error: "Department is required" })
+  })
 })

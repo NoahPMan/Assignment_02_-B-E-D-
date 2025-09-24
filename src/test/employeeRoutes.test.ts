@@ -44,3 +44,15 @@ describe("Employee API Routes", () => {
     expect(res.status).toBe(204)
   })
 })
+
+it("GET /api/v1/employees/branch/:branchId - should return employees for a branch", async () => {
+  const res = await request(app).get("/api/v1/employees/branch/1")
+  expect(res.status).toBe(200)
+  expect(Array.isArray(res.body)).toBe(true)
+})
+
+it("GET /api/v1/employees/department/:department - should return employees for a department", async () => {
+  const res = await request(app).get("/api/v1/employees/department/QA")
+  expect(res.status).toBe(200)
+  expect(Array.isArray(res.body)).toBe(true)
+})
