@@ -3,6 +3,7 @@ Backend Project
 Author: Noah Manaigre
 
 Description:
+- A RESTful API for managing employees and branches, with CRUD operations and tests for all endpoints.
 
 Endpoint links:
 
