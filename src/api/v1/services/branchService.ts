@@ -1,24 +1,22 @@
-import { branches, Branch } from "../../../data/branches"
+import * as BranchRepo from "../repositories/branchRepository";
+import { Branch } from "../models/branchModel";
 
-export const getAllBranches = (): Branch[] => branches
+export const getBranches = async (): Promise<Branch[]> => {
+  return await BranchRepo.getAllBranches();
+};
 
-export const getBranchById = (id: number): Branch | undefined =>
-  branches.find(b => b.id === id)
+export const getBranch = async (id: string): Promise<Branch | null> => {
+  return await BranchRepo.getBranchById(id);
+};
 
-export const addBranch = (branch: Branch): Branch => {
-  branches.push(branch)
-  return branch
-}
+export const createBranch = async (branch: Branch): Promise<Branch> => {
+  return await BranchRepo.createBranch(branch);
+};
 
-export const updateBranch = (id: number, updated: Partial<Branch>): Branch | undefined => {
-  const b = branches.find(b => b.id === id)
-  if (b) Object.assign(b, updated)
-  return b
-}
+export const updateBranch = async (id: string, branch: Partial<Branch>): Promise<Branch | null> => {
+  return await BranchRepo.updateBranch(id, branch);
+};
 
-export const deleteBranch = (id: number): boolean => {
-  const index = branches.findIndex(b => b.id === id)
-  if (index === -1) return false
-  branches.splice(index, 1)
-  return true
-}
+export const deleteBranch = async (id: string): Promise<boolean> => {
+  return await BranchRepo.deleteBranch(id);
+};

@@ -1,32 +1,32 @@
-import { employees, Employee } from "../../../data/employees"
+import * as EmployeeRepo from "../repositories/employeeRepository";
+import { Employee } from "../models/employeeModel";
 
-export const getAllEmployees = (): Employee[] => employees
+export const getEmployees = async (): Promise<Employee[]> => {
+  return await EmployeeRepo.getAllEmployees();
+};
 
-export const getEmployeeById = (id: number): Employee | undefined =>
-  employees.find(e => e.id === id)
+export const getEmployee = async (id: string): Promise<Employee | null> => {
+  return await EmployeeRepo.getEmployeeById(id);
+};
 
-export const addEmployee = (employee: Employee): Employee => {
-  employees.push(employee)
-  return employee
-}
+export const createEmployee = async (employee: Employee): Promise<Employee> => {
+  return await EmployeeRepo.createEmployee(employee);
+};
 
-export const updateEmployee = (id: number, updated: Partial<Employee>): Employee | undefined => {
-  const emp = employees.find(e => e.id === id)
-  if (emp) Object.assign(emp, updated)
-  return emp
-}
+export const updateEmployee = async (id: string, employee: Partial<Employee>): Promise<Employee | null> => {
+  return await EmployeeRepo.updateEmployee(id, employee);
+};
 
-export const deleteEmployee = (id: number): boolean => {
-  const index = employees.findIndex(e => e.id === id)
-  if (index === -1) return false
-  employees.splice(index, 1)
-  return true
-}
+export const deleteEmployee = async (id: string): Promise<boolean> => {
+  return await EmployeeRepo.deleteEmployee(id);
+};
 
-export const getEmployeesByBranch = (branchId: number) => {
-  return employees.filter(emp => emp.branchId === branchId)
-}
+export const getEmployeesByBranch = async (branchId: string): Promise<Employee[]> => {
+  const all = await EmployeeRepo.getAllEmployees();
+  return all.filter(emp => emp.branchId === branchId);
+};
 
-export const getEmployeesByDepartment = (department: string) => {
-  return employees.filter(emp => emp.department.toLowerCase() === department.toLowerCase())
-}
+export const getEmployeesByDepartment = async (department: string): Promise<Employee[]> => {
+  const all = await EmployeeRepo.getAllEmployees();
+  return all.filter(emp => emp.department && emp.department.toLowerCase() === department.toLowerCase());
+};
