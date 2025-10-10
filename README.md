@@ -28,4 +28,3 @@ Debug #2:
 -http://localhost:3000/api/v1/employees/1
 
 Debug #3
-
