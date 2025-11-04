@@ -3,6 +3,7 @@ import morgan from "morgan";
 import employeeRoutes from "./api/v1/routes/employeeRoutes"
 import branchRoutes from "./api/v1/routes/branchRoutes"
 import dotenv from "dotenv";
+import { getHelmetConfig } from "../config/helmetConfig";
 
 const app = express();
 
@@ -20,5 +21,7 @@ app.use("/api/v1/branches", branchRoutes)
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).send("Server is healthy");
 });
+
+app.use(getHelmetConfig());
 
 export default app;
