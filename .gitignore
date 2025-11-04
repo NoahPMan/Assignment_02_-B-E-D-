@@ -7,6 +7,7 @@ build/
 .env.local
 .env.*.local
 serviceAccountKey.json
+echo ".env"
 
 firebase-debug.log
 firestore-debug.log
