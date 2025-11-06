@@ -6,7 +6,7 @@ import employeeRoutes from "./api/v1/routes/employeeRoutes";
 import branchRoutes from "./api/v1/routes/branchRoutes";
 import cors from "cors";
 import getCorsOptions from "../config/corsConfig";
-
+import setupSwagger from "../config/swagger";
 
 dotenv.config();
 
@@ -29,5 +29,7 @@ app.use(cors(getCorsOptions()));
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).send("Server is healthy");
 });
+
+setupSwagger(app);
 
 export default app;
