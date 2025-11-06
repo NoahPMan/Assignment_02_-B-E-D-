@@ -4,6 +4,9 @@ import dotenv from "dotenv";
 import { getHelmetConfig } from "../config/helmetConfig";
 import employeeRoutes from "./api/v1/routes/employeeRoutes";
 import branchRoutes from "./api/v1/routes/branchRoutes";
+import cors from "cors";
+import getCorsOptions from "../config/corsConfig";
+
 
 dotenv.config();
 
@@ -19,6 +22,8 @@ app.use(morgan("combined"));
 // Routes
 app.use("/api/v1/employees", employeeRoutes);
 app.use("/api/v1/branches", branchRoutes);
+
+app.use(cors(getCorsOptions()));
 
 // Health check endpoint
 app.get("/health", (req: Request, res: Response) => {
