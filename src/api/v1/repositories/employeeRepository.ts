@@ -1,4 +1,4 @@
-import { db } from "config/firebaseConfig";
+import { db } from "../../../../config/firebaseConfig";
 import { Employee } from "../models/employeeModel";
 
 const employeesCollection = db.collection("employees");

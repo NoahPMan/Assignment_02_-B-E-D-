@@ -1,4 +1,4 @@
-import { db } from "config/firebaseConfig";
+import { db } from "../../../../config/firebaseConfig";
 import { Branch } from "../models/branchModel";
 
 const branchesCollection = db.collection("branches");
