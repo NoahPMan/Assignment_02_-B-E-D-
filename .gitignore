@@ -1,2 +1,26 @@
 node_modules/
+
 dist/
+build/
+
+.env
+.env.local
+.env.*.local
+serviceAccountKey.json
+echo ".env"
+
+firebase-debug.log
+firestore-debug.log
+
+coverage/
+*.log
+
+*.tsbuildinfo
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+testing-evidence/
